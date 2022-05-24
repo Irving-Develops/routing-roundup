@@ -1,13 +1,26 @@
 const express = require('express');
 
+const routes = require('./routes/routers');
+
+
 const app = express();
 app.set('view engine', 'pug')
+
+
+
+app.use('/capital-letters/', routes);
+
 
 
 app.get('/', (req, res) => {
     res.send('Hello from Express!');
 })
 
+
+app.get('/*xyz', (req, res) => {
+    res.send("That's all I wrote.");
+    // /product/: id(\\d + )
+})
 
 
 app.all('*', (req, res) => {
@@ -21,3 +34,4 @@ app.all('*', (req, res) => {
 const port = 8081;
 
 app.listen(port, () => console.log(`listening on port ${port}`));
+
