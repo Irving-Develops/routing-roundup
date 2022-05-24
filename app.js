@@ -1,6 +1,7 @@
 const express = require('express');
 
 const app = express();
+app.set('view engine', 'pug')
 
 
 app.get('/', (req, res) => {
@@ -8,6 +9,14 @@ app.get('/', (req, res) => {
 })
 
 
+
+app.all('*', (req, res) => {
+    res.render("app", {
+        method: req.method,
+        path: req.path,
+        randomNumber: 7
+    })
+})
 
 const port = 8081;
 
