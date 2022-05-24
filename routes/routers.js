@@ -11,9 +11,9 @@ router.get('/contact', (req, res) => {
 })
 
 
-router.get('*', (req, res) => {
-    console.log(req.path)
-    res.send(req.path.toUpperCase().slice(1));
+router.get('/:id', (req, res) => {
+    // console.log(req.path)
+    res.send(req.params.id.toUpperCase());
 })
 
 module.exports = router;

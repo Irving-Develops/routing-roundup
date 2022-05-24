@@ -10,7 +10,7 @@ app.set('view engine', 'pug')
 app.use('/margot/', routes)
 app.use('/margeaux/', routes)
 
-// app.use('/capital-letters/', routes);
+app.use('/capital-letters/', routes);
 
 
 
@@ -25,13 +25,14 @@ app.get('/*xyz', (req, res) => {
 })
 
 
-app.all('*', (req, res) => {
-    res.render("app", {
-        method: req.method,
-        path: req.path,
-        randomNumber: 7
+app.all(/^\/[\w-]*$/
+    , (req, res) => {
+        res.render("app", {
+            method: req.method,
+            path: req.path,
+            randomNumber: 7
+        })
     })
-})
 
 const port = 8081;
 
