@@ -7,8 +7,10 @@ const app = express();
 app.set('view engine', 'pug')
 
 
+app.use('/margot/', routes)
+app.use('/margeaux/', routes)
 
-app.use('/capital-letters/', routes);
+// app.use('/capital-letters/', routes);
 
 
 
@@ -34,4 +36,3 @@ app.all('*', (req, res) => {
 const port = 8081;
 
 app.listen(port, () => console.log(`listening on port ${port}`));
-
